@@ -1,5 +1,15 @@
 <html>
-<title>{{title}}</title>
+  <title>{{title}}</title>
+{{#if scripts}}
+  {{#each scripts}}
+  <script type="text/javascript" src="{{this}}"></script>
+  {{/each}}
+{{/if}}
+{{#if styles}}
+  {{#each styles}}
+  <link rel="stylesheet" href="{{this}}" type="text/css" media="screen" />
+  {{/each}}
+{{/if}}
 <body>
 {{{body}}}
 </body>

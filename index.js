@@ -7,7 +7,14 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/admin', function  (req, res) {
-  res.render('admin.ejs', {title: 'Admin'});
+  var scripts = [
+    '/media/js/jquery-1.7.2.min.js',
+    '/media/bootstrap/js/bootstrap.min.js',
+    '/media/bootstrap/js/bootstrap-dropdown.js'
+    ];
+  var styles = ['/media/bootstrap/css/bootstrap.min.css'];
+  
+  res.render('admin.hbs', {title: 'Admin', scripts: scripts, styles: styles});
 });
 
 app.get('/*', function(req, res){
