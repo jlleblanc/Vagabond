@@ -1,0 +1,12 @@
+{
+  "author": "Joe LeBlanc <contact@jlleblanc.com>",
+  "name": "cms",
+  "description": "A simple CMS",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
