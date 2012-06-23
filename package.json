@@ -3,7 +3,10 @@
   "name": "cms",
   "description": "A simple CMS",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "*",
+    "mongodb": "*"
+  },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
