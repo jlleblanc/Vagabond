@@ -6,7 +6,10 @@
   "dependencies": {
     "express": "*",
     "mongodb": "*",
-    "hbs": "*"
+    "hbs": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "mongoose": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},

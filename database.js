@@ -1,27 +1,22 @@
-var mongo = require('mongodb'),
-  Server = mongo.Server,
-  Db = mongo.Db;
+var mongoose = require('mongoose'),
+  config = require('./config').db;
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-var db = new Db('node_cms', server);
+var db = mongoose.createConnection(config.host, config.db_name, config.port);
 
-db.open(function(err, db) {
-  if(!err) {
-    console.log("We are connected");
-  }
+db.once('open', function () {
+  module.exports.Page = db.model('pages', new mongoose.Schema({
+    url: String,
+    title: String,
+    body: String
+  }));
+
+  module.exports.User = db.model('users', new mongoose.Schema({
+    username: String
+  }));
   
-  // db.collection('pages', function(err, collection) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log('made it');
-  //     var page = {'url': '/', 'title': 'Home Page', 'body': 'This is the home page.'};
-  //     collection.insert(page);
-  //     page = {'url': '/about', 'title': 'About us', 'body': 'Why do we exist? That is the question. Might induce some ennui.'};
-  //     collection.insert(page);
-  //   }
-  // });
-  
+  console.log("We are connected");
 });
 
-exports.db = db;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+module.exports.db = db;

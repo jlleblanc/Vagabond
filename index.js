@@ -1,42 +1,22 @@
-var db = require('./database').db;
-var express = require('express');
+var db = require('./database');
+var config = require('./config');
+var server = require('./server');
 
-var app = express.createServer();
-app.set('view engine', 'hbs');
-
-app.use(express.static(__dirname + '/public'));
-
-app.get('/admin', function  (req, res) {
-  var scripts = [
-    '/media/js/jquery-1.7.2.min.js',
-    '/media/bootstrap/js/bootstrap.min.js',
-    '/media/bootstrap/js/bootstrap-dropdown.js'
-    ];
-  var styles = ['/media/bootstrap/css/bootstrap.min.css'];
+server.get('/*', function(req, res){
   
-  res.render('admin.hbs', {title: 'Admin', scripts: scripts, styles: styles});
-});
-
-app.get('/*', function(req, res){
-  
-  db.collection('pages', {safe: true}, function  (err, collection) {
+  db.Page.find({url: req.url}, function  (err, page) {
     if (err) {
       res.render('layout.hbs', {title: 'ERROR', body: 'error: ' + err});
     } else {
-      collection.findOne({'url': req.url}, function  (err, item) {
-        if (err) {
-          res.render('layout.hbs', {title: 'ERROR', body: 'error: ' + err});
-        } else {
-          if (item) {
-            res.render('layout.hbs', {title: item.title, body: item.body});
-          } else {
-            res.render('layout.hbs', {title: 'Not Found', body: 'item not found'});
-          }
-        }
-      });
+      if (page.length) {
+        page = page[0];
+        res.render('layout.hbs', {title: page.title, body: page.body});        
+      } else {
+        res.status(404).render('layout.hbs', {title: 'ERROR', body: 'Not Found'});
+      }
     }
   });
 
 });
 
-app.listen(3000);
+server.listen(config.port);
