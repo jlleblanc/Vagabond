@@ -1,13 +1,13 @@
-// TODO: Create some sort of factory to get the right configuration based on environment varible, etc...
+// TODO: Switch this over to Flatiron's config
 module.exports = {
   port: 3000,
   admin_route: '/admin',
   login_route: '/login',
   logout_route: '/logout',
-  session_secret: '234fasdklj932',
+  session_secret: 'some secret here',
   db: {
     host: 'localhost',
     port: 27017,
-    db_name: 'node_cms'
+    db_name: 'your_db_name_here'
   }
 };
