@@ -11,7 +11,8 @@ db.once('open', function () {
   }));
 
   module.exports.User = db.model('users', new mongoose.Schema({
-    username: String
+    username: String,
+    password: String
   }));
   
   console.log("We are connected");
