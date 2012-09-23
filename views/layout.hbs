@@ -11,6 +11,27 @@
   {{/each}}
 {{/if}}
 <body>
-{{{body}}}
+
+  {{#if user}}
+    <p>Hello {{user.username}}</p>
+	  <a href="/logout">Log out</a>
+  {{else}}
+  	<h3>Log in</h3>
+  	<form action="/login" method="post">
+  	    <div>
+  	    <label>Username:</label>
+  	    <input type="text" name="username"/><br/>
+  	    </div><div>
+  	    <label>Password:</label>
+  	    <input type="password" name="password"/>
+  	    </div><div>
+  	    <input type="submit" value="Log In"/>
+  	    </div>
+  	</form>
+  {{/if}}
+
+{{{content}}}
+
+
 </body>
 </html>
