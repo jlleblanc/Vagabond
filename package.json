@@ -1,7 +1,7 @@
 {
   "author": "Joe LeBlanc <contact@jlleblanc.com>",
-  "name": "cms",
-  "description": "A simple CMS",
+  "name": "vagabond",
+  "description": "A mess of a CMS",
   "version": "0.0.0",
   "dependencies": {
     "express": "*",
@@ -9,7 +9,9 @@
     "hbs": "*",
     "passport": "*",
     "passport-local": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "nconf": "*",
+    "bcrypt": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
