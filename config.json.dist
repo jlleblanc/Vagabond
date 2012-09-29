@@ -1,0 +1,12 @@
+{
+  "port": 3000,
+  "admin_route": "/admin",
+  "login_route": "/login",
+  "logout_route": "/logout",
+  "session_secret": "some secret here",
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "db_name": "your_db_name_here"
+  }
+}

@@ -1,6 +1,6 @@
-var db = require('./database'),
-  config = require('./config'),
-  server = require('./server');
+var db = require('./lib/database'),
+  server = require('./lib/server'),
+  conf = require('./lib/config');
 
 server.get('/*', function(req, res){
 
@@ -20,4 +20,4 @@ server.get('/*', function(req, res){
 
 });
 
-server.listen(config.port);
+server.listen(conf.get('port'));
