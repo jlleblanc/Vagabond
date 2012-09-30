@@ -1,23 +1,12 @@
+// TODO: either put all of this in a try/catch or find a better way of 
+// logging errors/create a debug mode
+
 var db = require('./lib/database'),
   server = require('./lib/server'),
-  conf = require('./lib/config');
+  conf = require('./lib/config'),
+  router = require('./lib/router');
+  
+router.addRoutes(server);
+server.listen(conf.get('port')); 
 
-server.get('/*', function(req, res){
-
-  var styles = ['/media/bootstrap/css/bootstrap.min.css'];
-
-  db.Page.findOne({url: req.url}, function  (err, page) {
-    if (err) {
-      res.render('layout.hbs', {title: 'ERROR', body: 'error: ' + err, styles: styles});
-    } else {
-      if (page) {
-        res.render('layout.hbs', {title: page.title, content: page.body, user: req.user, styles: styles});        
-      } else {
-        res.status(404).render('layout.hbs', {title: 'ERROR', body: 'Not Found', styles: styles});
-      }
-    }
-  });
-
-});
-
-server.listen(conf.get('port'));
+module.exports = server;
