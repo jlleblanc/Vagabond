@@ -3,6 +3,7 @@
   "admin_route": "/admin",
   "login_route": "/login",
   "logout_route": "/logout",
+  "register_route": "/register",
   "session_secret": "some secret here",
   "db": {
     "host": "localhost",

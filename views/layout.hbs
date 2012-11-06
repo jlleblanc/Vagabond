@@ -12,6 +12,36 @@
 {{/if}}
 <body>
 
+{{#if user}}
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function  () {
+    $('.dropdown-toggle').dropdown();
+  });
+</script>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Pages
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">List</a></li>
+          <li><a href="#">New</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Configuration</a></li>
+      <li><a href="#">Users</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+<div class="container">
+
   {{#if user}}
     <p>Hello {{user.username}}</p>
 	  <a href="/logout">Log out</a>
@@ -28,10 +58,23 @@
   	    <input type="submit" value="Log In"/>
   	    </div>
   	</form>
+    <h3>Register</h3>
+    <form action="/register" method="post">
+      <div>
+        <label>Username:</label>
+        <input type="text" name="username"/><br/>
+        </div><div>
+        <label>Password:</label>
+        <input type="password" name="password"/>
+        </div><div>
+        <input type="submit" value="Register"/>
+        </div>
+    </form>
   {{/if}}
 
 {{{content}}}
 
+</div>
 
 </body>
 </html>
