@@ -8,7 +8,7 @@ Enjoy the chaos!
 
 ## Configuration
 
-Copy config.js.dist file to config.js and adjust as needed.
+Copy config.json.dist file to config.json and adjust as needed.
 
 ## Pull Requests
 
