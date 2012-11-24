@@ -3,9 +3,9 @@
 
 var server = require('./lib/server'),
   conf = require('./lib/config'),
-  router = require('./lib/router');
+  router = require('./router');
 
-router.addRoutes(server);
+router(server);
 server.listen(conf.get('port')); 
 
 module.exports = server;
