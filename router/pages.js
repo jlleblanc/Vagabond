@@ -1,7 +1,6 @@
-var pages = {},
-  page = require('../lib/database').load_model('page');
+var page = require('../app').db.load_model('page');
 
-pages.route = function (req, res){
+exports.route = function (req, res){
   var scripts = [
     '/media/js/jquery-1.7.2.min.js',
     '/media/bootstrap/js/bootstrap.min.js',
@@ -19,8 +18,6 @@ pages.route = function (req, res){
 
 };
 
-pages.create = function  (req, res) {
+exports.create = function  (req, res) {
   //todo
 };
-
-module.exports = pages;

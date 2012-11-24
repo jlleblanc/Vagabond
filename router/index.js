@@ -1,12 +1,12 @@
-module.exports = function (server) {
+module.exports = function (server, app) {
 
   // sessions
-  server.post(server.config.get('login_route'), require('./auth').login);
-  server.post(server.config.get('register_route'), require('./auth').register);
-  server.get(server.config.get('logout_route'), require('./auth').logout);
+  server.post(app.config.get('login_route'), require('./auth').login);
+  server.post(app.config.get('register_route'), require('./auth').register);
+  server.get(app.config.get('logout_route'), require('./auth').logout);
 
   // admin
-  server.get(server.config.get('admin_route'), require('./admin'));
+  server.get(app.config.get('admin_route'), require('./admin'));
 
   // pages
   server.get('/*', require('./pages').route);

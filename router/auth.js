@@ -1,21 +1,18 @@
-var passport = require('passport'),
-  auth = {};
+var passport = require('passport');
 
-auth.login = passport.authenticate('local', {
+exports.login = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/',
   falshFailure: true
 });
 
-auth.register = function  (req, res) {
+exports.register = function  (req, res) {
   passport.register(req.body.username, req.body.password, function  () {
     res.redirect('/');
   });
 };
 
-auth.logout = function (req, res) {
+exports.logout = function (req, res) {
   req.logOut();
   res.redirect('/');
 };
-
-module.exports = auth;

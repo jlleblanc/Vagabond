@@ -1,7 +1,5 @@
 nconf = require('nconf');
 
-nconf.argv()
+module.exports = nconf.argv()
   .env()
   .file({ file: 'config.json' });
-
-module.exports = nconf;
