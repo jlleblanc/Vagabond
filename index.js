@@ -2,10 +2,9 @@
 // logging errors/create a debug mode
 
 var server = require('./lib/server'),
-  conf = require('./lib/config'),
   router = require('./router');
 
 router(server);
-server.listen(conf.get('port')); 
+server.listen(server.config.get('port')); 
 
 module.exports = server;
