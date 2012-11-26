@@ -1,7 +1,8 @@
-mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+  config = require('../config');
 
-exports.connect = function  (host, port, name) {
-  mongoose.connect("mongodb://" + host + ":" + port + "/" + name);
+exports.connect = function  () {
+  mongoose.connect("mongodb://" + config.get('db:host') + ":" + config.get('db:port') + "/" + config.get('db:db_name'));
 };
 
 exports.load_model = function  (name) {

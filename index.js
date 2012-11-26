@@ -5,6 +5,8 @@ var server = require('./server'),
   app = require('./app'),
   router = require('./router');
 
+app.init();
+
 router(server, app);
 server.listen(app.config.get('port')); 
 
