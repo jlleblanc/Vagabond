@@ -1,13 +1,14 @@
 // TODO: either put all of this in a try/catch or find a better way of 
 // logging errors/create a debug mode
 
-var server = require('./server'),
-  app = require('./app'),
+var app = require('./app'),
   router = require('./router');
 
 app.init();
 
+var server = require('./server')(app);
 router(server, app);
-server.listen(app.config.get('port')); 
+
+console.info('Vagabond server started on port ' + app.config.get('port'));
 
 module.exports = server;
